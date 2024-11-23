@@ -4,10 +4,13 @@ class Program
 {
     static void Main()
     {
+        Console.Clear();
+        Console.WriteLine("Данная программа выводит слова массива, состоящие из трех и менее символов\n");
         string[] array = GetInputArray();
+        PrintResultArray(array, $"\nИсходный массив слов:");
         int taskLength = 3;
         string[] resultArray = FilterArrayByLength(array, taskLength);
-        PrintResultArray(resultArray);
+        PrintResultArray(resultArray, $"\nСлова из {taskLength} и менее символов:");
     }
 
     static string[] GetInputArray()
@@ -16,7 +19,7 @@ class Program
         int arrayLength = int.Parse(Console.ReadLine());
         string[] array = new string[arrayLength];
 
-        Console.WriteLine("Введите слова поочередно:");
+        Console.WriteLine("\nВведите слова поочередно:");
         for (int i = 0; i < arrayLength; i++)
         {
             Console.Write($"Слово {i + 1}: ");
@@ -44,9 +47,9 @@ class Program
         return resultArray;
     }
 
-    static void PrintResultArray(string[] array)
+    static void PrintResultArray(string[] array, string message)
     {
-        Console.WriteLine("Результирующий массив:");
+        Console.WriteLine(message);
         Console.WriteLine(string.Join(", ", array));
     }
 }
